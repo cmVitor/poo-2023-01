@@ -1,0 +1,6 @@
+package com.github.cmvitor.ufg.poo.t19;
+
+public class Usuario extends Atividade {
+
+    private Pessoa pessoa;
+}

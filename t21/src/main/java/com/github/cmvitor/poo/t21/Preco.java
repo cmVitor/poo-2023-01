@@ -2,40 +2,43 @@ package com.github.cmvitor.poo.t21;
 
 import java.util.Objects;
 
-public class Preco {
+public class Preco extends Object {
 
-    private double value;
+    private double valor;
     private Moeda moeda;
 
-    public Preco(double value, Moeda moeda) {
-        if(value < 0) {
-            throw new IllegalArgumentException("Preço inválido");
+    public Preco(double valor, Moeda moeda) {
+        if (valor < 0) {
+            throw new IllegalArgumentException("Valor não pode ser negativo!");
         }
 
-        Objects.requireNonNull(moeda, "Moeda inválida"); //Mesma coisa de mandar uma nova exception de moeda nula.
+        Objects.requireNonNull(moeda, "Nao pode ser nulo!");
 
-        this.value = value;
+        this.valor = valor;
         this.moeda = moeda;
     }
 
-    public double getValue() {
-        return value;
+    public double getValor() {
+        return valor;
     }
 
     public Moeda getMoeda() {
         return moeda;
     }
 
+    public static Preco reais(double valor) {
+        return new Preco(valor, Moeda.BRL);
+    }
+
     @Override
     public String toString() {
         return "Preco{" +
-                "value=" + value +
+                "valor=" + valor +
                 ", moeda=" + moeda +
                 '}';
     }
 
     public static void main(String[] args) {
-        Preco preco = new Preco(12.2, Moeda.DOLLAR);
-        System.out.println(preco); //Chama o método toString.
+        System.out.println(Preco.reais(10));
     }
 }
